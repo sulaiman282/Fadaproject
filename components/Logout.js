@@ -12,10 +12,6 @@ export default function Logout() {
     const router = useRouter();
 
 
-
-
-
-
     useEffect(() => {
      
       handleClick();
