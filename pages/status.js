@@ -46,7 +46,12 @@ export default function Status() {
       try {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}/auth/twitter`,
-          { withCredentials: true }
+          {
+            withCredentials: true,
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            }
+          }
         );
         console.log("response", response);
 
@@ -68,7 +73,12 @@ export default function Status() {
     try {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/status/get`,
-        { withCredentials: true }
+        {
+          withCredentials: true,
+          headers: {
+            'Access-Control-Allow-Origin': '*'
+          }
+        }
       );
       console.log("response", response);
 

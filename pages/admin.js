@@ -24,7 +24,12 @@ export default function Admin() {
       try {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}/auth/twitter`,
-          { withCredentials: true }
+          {
+            withCredentials: true,
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            }
+          }
         );
         const { status } = response;
       } catch (error) {
@@ -71,7 +76,12 @@ console.log("pagecount",pageCount)
     try {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/form/get-all-forms?page=${page}&status=${status1}`,
-        { withCredentials: true }
+        {
+          withCredentials: true,
+          headers: {
+            'Access-Control-Allow-Origin': '*'
+          }
+        }
       );
       console.log("response", response);
       const { status } = response;
@@ -103,8 +113,8 @@ console.log("pagecount",pageCount)
         {
           withCredentials: true,
           headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
+            'Access-Control-Allow-Origin': '*'
+          }
         }
       );
       console.log("response", response);

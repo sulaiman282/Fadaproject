@@ -19,7 +19,12 @@ export default function Form() {
       try {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}/auth/twitter`,
-          { withCredentials: true }
+          {
+            withCredentials: true,
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            }
+          }
         );
         // console.log("response", response);
 
@@ -42,7 +47,12 @@ export default function Form() {
     try {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/status/get`,
-        { withCredentials: true }
+        {
+          withCredentials: true,
+          headers: {
+            'Access-Control-Allow-Origin': '*'
+          }
+        }
       );
       // console.log("response", response);
 
@@ -64,7 +74,12 @@ export default function Form() {
     try {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/form/get-form`,
-        { withCredentials: true }
+        {
+          withCredentials: true,
+          headers: {
+            'Access-Control-Allow-Origin': '*'
+          }
+        }
       );
 
       const { status } = response;
@@ -100,6 +115,7 @@ export default function Form() {
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
+        'Access-Control-Allow-Origin': '*'
       },
       withCredentials: true, // assuming you want to send cookies with the request
     };
