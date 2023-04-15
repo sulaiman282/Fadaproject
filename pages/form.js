@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export default function Form() {
   const router = useRouter();
-  const [fieldValue, setFieldValue] = useState(null);
+
   const [isShowingToast, setisShowingToast] = useState(false);
   const [userData, setUserData] = useState(null);
 
@@ -22,8 +22,8 @@ export default function Form() {
           {
             withCredentials: true,
             headers: {
-              'Access-Control-Allow-Origin': '*'
-            }
+              "Access-Control-Allow-Origin": "*",
+            },
           }
         );
         // console.log("response", response);
@@ -50,8 +50,8 @@ export default function Form() {
         {
           withCredentials: true,
           headers: {
-            'Access-Control-Allow-Origin': '*'
-          }
+            "Access-Control-Allow-Origin": "*",
+          },
         }
       );
       // console.log("response", response);
@@ -77,8 +77,8 @@ export default function Form() {
         {
           withCredentials: true,
           headers: {
-            'Access-Control-Allow-Origin': '*'
-          }
+            "Access-Control-Allow-Origin": "*",
+          },
         }
       );
 
@@ -102,6 +102,7 @@ export default function Form() {
       how_long: values?.time_in_space,
       help: values.help_nft_text,
       tweetSent: values.tweet,
+      links: values.links,
     };
     if (values.reffer1?.length > 0) {
       data1.nominee1 = values.reffer1;
@@ -111,11 +112,11 @@ export default function Form() {
     }
     const formData = new FormData();
     formData.append("data", JSON.stringify(data1));
-    formData.append("file", fieldValue);
+   
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
-        'Access-Control-Allow-Origin': '*'
+        "Access-Control-Allow-Origin": "*",
       },
       withCredentials: true, // assuming you want to send cookies with the request
     };
@@ -157,6 +158,7 @@ export default function Form() {
             reffer1: userData?.nominee1 || "",
             reffer2: userData?.nominee2 || "",
             tweet: userData?.tweetSent || false,
+            links: userData?.links || [],
           }}
           validate={(values) => {
             const errors = {};
@@ -175,12 +177,21 @@ export default function Form() {
             if (!values.help_nft_text) {
               errors.help_nft_text = "Required";
             }
+            else if(values.help_nft_text?.length >250) {
+              errors.help_nft_text = "Max 250 characters.";
+            }
+
+
+            if (!values.links[0]) {
+              errors.links = "Required";
+            }
 
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
             submitform(values);
             setSubmitting(false);
+            console.log(values)
           }}
         >
           {({
@@ -235,26 +246,30 @@ export default function Form() {
                         Developer
                       </option>
                       <option className="p-4" value="founder">
-                        Founder
+                      Founder
                       </option>
-                      <option className="p-4" value="figure">
-                        Figure
+                      <option className="p-4" value="influencer">
+                      Influencer
+                      </option>
+                      <option className="p-4" value="grinder">
+                      Grinder
                       </option>
                       <option className="p-4" value="meme_poster">
-                        Meme Poster
+                      Meme Poster
                       </option>
                       <option className="p-4" value="content_creator">
-                        Content Creator
+                      Content Creator
                       </option>
-                      <option className="p-4" value="cm/mod">
-                        CM/MOD
+                      <option className="p-4" value="community_manager/moderator">
+                      Community Manager/Moderator
                       </option>
                       <option className="p-4" value="alpha_caller">
-                        Alpha Caller
+                      Alpha Caller
                       </option>
                       <option className="p-4" value="space_host">
-                        Space Host
+                      Space Host
                       </option>
+               
                       <option className="p-4" value="others">
                         Others...
                       </option>
@@ -336,9 +351,7 @@ export default function Form() {
 
                 <div className="flex flex-col gap-4 ">
                   <p className="text-xl capitalize">
-                  HOW DID YOU HELP FADA OR THE NFT ECOSYSTEM TO GROW?
-
-
+                    HOW DID YOU HELP FADA OR THE NFT ECOSYSTEM TO GROW?
                   </p>
                   <textarea
                     rows="6"
@@ -358,35 +371,47 @@ export default function Form() {
                   </span>
                 </div>
 
-                <div className="flex flex-col gap-4 ">
-                  {userData?.image && (
-                    <div>
-                      <img
-                        src={
-                          process.env.NEXT_PUBLIC_API_URL +
-                          `/images/` +
-                          userData?.image
-                        }
-                        alt="Logo"
-                        className="object-contain h-40 w-40"
-                      />
-                    </div>
-                  )}
-
-                  <p className="text-xl capitalize">ATTACH MEDIA TO SUPPORT YOUR SUBMISSION</p>
+                <div className="flex flex-col ">
+                  <p className="text-xl capitalize">INSERT LINKS THAT SUPPORT YOUR APPLICATION</p>
                   <input
-                    type="file"
-                    accept="image/*"
-                    name="file"
+                    type="text"
+                    name="links"
                     onChange={(e) => {
-                      setFieldValue(e.target.files[0]);
+                      values.links[0] = e.target.value;
                     }}
-                    className="px-4 pt-1 rounded-md h-10 text-gray-900  border-2 bg-white w-full placeholder:text-gray-500 placeholder:text-xl"
+                    onBlur={handleBlur}
+                    defaultValue={values.links[0]}
+                    placeholder="Link 1"
+                    className="p-4 rounded-md h-10 mt-3 border-2 bg-white w-full placeholder:text-gray-500 placeholder:text-xl pl-10"
                   />
 
-                  <span className="ml-5 tracking-widest text-xs text-red-700">
-                    {errors.file && touched.file && errors.file}
+                  <span className="ml-5 mt-2 tracking-widest text-xs text-red-700">
+                    {errors.links && touched.links && errors.links}
                   </span>
+
+                  <input
+                    type="text"
+                    name="links"
+                    onChange={(e) => {
+                      values.links[1] = e.target.value;
+                    }}
+                    onBlur={handleBlur}
+                    defaultValue={values.links[1]}
+                    placeholder="Link 2"
+                    className="p-4 rounded-md h-10  mt-3 border-2 bg-white w-full placeholder:text-gray-500 placeholder:text-xl pl-10"
+                  />
+
+                  <input
+                    type="text"
+                    name="links"
+                    onChange={(e) => {
+                      values.links[2] = e.target.value;
+                    }}
+                    onBlur={handleBlur}
+                    defaultValue={values.links[2]}
+                    placeholder="Link 3"
+                    className="p-4 rounded-md h-10  mt-3 border-2 bg-white w-full placeholder:text-gray-500 placeholder:text-xl pl-10"
+                  />
                 </div>
 
                 <div className="flex flex-col gap-4 ">
@@ -448,11 +473,13 @@ export default function Form() {
                       values.tweet = true;
                     }}
                     className="bg-[#1DA1F2] text-lg lg:text-xl text-white font-bold w-40 text-center py-3 rounded-full"
-                    href={`https://twitter.com/intent/tweet?text=I'm%20excited%20to%20share%20that%20I'm%20just%20one%20step%20away%20from%20joining%20the%20Fayden%20community,%20having%20completed%20the%20application%20form%20for%20@ProjectFADA.%20BAF!%0A%0A${
+
+                    href={`https://twitter.com/intent/tweet?text=I'm%20excited%20to%20share%20that%20I've%20just%20completed%20the%20form%20for%20@ProjectFADA%20!%20%0A%0A%0AI%20nominate%20${
                       values.reffer1 ? `@` + values.reffer1 : ""
-                    }%20${
+                    }%20and%20${
                       values.reffer2 ? `@` + values.reffer2 : ""
-                    }%20it's%20your%20turn%20to%20Be%20a%20Fayden.%20`}
+                    }%20to%20fill%20it.%20It's%20your%20turn%20to%20Be%20A%20Fayden.`}
+
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -460,22 +487,17 @@ export default function Form() {
                   </a>
                 </div>
                 <p className="text-md lg:text-lg text-red-700">
-                Make sure all the information provided are accurate before submitting your application
+                  Make sure all the information provided are accurate before
+                  submitting your application
                 </p>
-
 
                 <div className="flex justify-center gap-4 ">
                   {/* Here */}
-              
 
                   <button className="text-xl lg:text-2xl rounded-full bg-primary hover:bg-primary2  w-40 text-center py-2 text-white">
                     Submit
                   </button>
                 </div>
-
-
-
-
               </div>
             </form>
           )}

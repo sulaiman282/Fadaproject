@@ -6,14 +6,12 @@ import React from "react";
 import ReactTypingEffect from "react-typing-effect";
 export default function status() {
   return (
- <>
-    <Head>
+    <>
+      <Head>
         <title>Success - Fada</title>
       </Head>
-    
- 
 
-    <div
+      <div
         className={`relative overflow-hidden h-screen flex items-center  bg-[url('/bg1.jpg')] bg-center bg-cover bg-no-repeat bg-static bg-fixed signup`}
       >
         <div className="container-sk w-full">
@@ -43,44 +41,31 @@ export default function status() {
                 </div>
 
                 <div className="flex items-center flex-col gap-6 mt-5">
-               
-
                   <div className="flex flex-col justify-center gap-4">
-                    <p className="text-xl md:text-2xl text-center text-primary font-bold bg-white/50 rounded-md p-2">Form Submitted Successfully. </p>
-
-                 
-
-
-
-         
-        
-
-
+                    <p className="text-xl md:text-2xl text-center text-primary font-bold bg-white/50 rounded-md p-2">
+                      Form Submitted Successfully.{" "}
+                    </p>
                   </div>
                 </div>
 
                 <div className="text-2xl gap-6 flex justify-center mt-10 text-white">
+                  <a href="https://twitter.com/ProjectFADA" target="_black">
+                    <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer hover:bg-primary2 duration-300">
+                      <i className="fa-brands fa-twitter absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2" />
+                    </div>
+                  </a>
+
+                  <a href="https://discord.gg/WFnEbNGNDU" target="_black">
+                    <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer hover:bg-primary2 duration-300">
+                      <i className="fa-brands fa-discord absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2 " />
+                    </div>
+                  </a>
                   <a
                     href="https://www.instagram.com/projectfada/"
                     target="_black"
                   >
                     <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer  hover:bg-primary2 duration-300">
                       <i className="fa-brands fa-instagram absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2 " />
-                    </div>
-                  </a>
-
-                  <a
-                    href="https://discord.com/invite/NVRJcD9nah"
-                    target="_black"
-                  >
-                    <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer hover:bg-primary2 duration-300">
-                      <i className="fa-brands fa-discord absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2 " />
-                    </div>
-                  </a>
-
-                  <a href="https://twitter.com/ProjectFADA" target="_black">
-                    <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer hover:bg-primary2 duration-300">
-                      <i className="fa-brands fa-twitter absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2" />
                     </div>
                   </a>
                 </div>
@@ -95,6 +80,6 @@ export default function status() {
           </div>
         </div>
       </div>
- </>
+    </>
   );
 }

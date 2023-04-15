@@ -90,6 +90,23 @@ export default function Index() {
                 </div>
 
                 <div className="text-2xl gap-6 flex justify-center mt-10 text-white">
+                 
+                <a href="https://twitter.com/ProjectFADA" target="_black">
+                    <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer hover:bg-primary2 duration-300">
+                      <i className="fa-brands fa-twitter absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2" />
+                    </div>
+                  </a>
+                 
+                
+
+                  <a
+                    href="https://discord.gg/WFnEbNGNDU"
+                    target="_black"
+                  >
+                    <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer hover:bg-primary2 duration-300">
+                      <i className="fa-brands fa-discord absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2 " />
+                    </div>
+                  </a>
                   <a
                     href="https://www.instagram.com/projectfada/"
                     target="_black"
@@ -98,21 +115,7 @@ export default function Index() {
                       <i className="fa-brands fa-instagram absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2 " />
                     </div>
                   </a>
-
-                  <a
-                    href="https://discord.com/invite/NVRJcD9nah"
-                    target="_black"
-                  >
-                    <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer hover:bg-primary2 duration-300">
-                      <i className="fa-brands fa-discord absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2 " />
-                    </div>
-                  </a>
-
-                  <a href="https://twitter.com/ProjectFADA" target="_black">
-                    <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer hover:bg-primary2 duration-300">
-                      <i className="fa-brands fa-twitter absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2" />
-                    </div>
-                  </a>
+                
                 </div>
               </div>
             </div>
@@ -120,55 +123,7 @@ export default function Index() {
         </div>
       </div>
 
-      {/* <div className=" h-screen w-screen p-5 lg:p-10 xl:p-20 bg-[url('/bg.png')] bg-cover bg-center lg:bg-cover bg-no-repeat bg-static bg-fixed bg-transparent">
-        <div className="h-full w-full  flex flex-col justify-between items-center gap-10 overflow-y-auto">
-          <Image
-            placeholder="blur"
-            src="/logo.png"
-            width={300}
-            height={300}
-            blurDataURL="/blur.png"
-            alt="Logo"
-            className="object-contain h-40 w-40"
-          />
-
-          <div className="flex items-center flex-col gap-6">
-            <button
-              onClick={() => {
-                handleClick();
-              }}
-              className="lg:text-xl uppercase tracking-wider bg-primary rounded-xl w-60 py-6 text-white font-bold   hover:text-red-700 duration-300"
-            >
-              Apply Now
-            </button>
-            <Link href="/status">
-              <button className="uppercase  bg-primary rounded-xl lg:text-xl tracking-wider  w-60 py-6 text-white font-bold  hover:text-red-700 duration-300">
-                Check Status
-              </button>
-            </Link>
-          </div>
-
-          <div className="text-2xl gap-6 flex text-white">
-            <a href="https://www.instagram.com/projectfada/" target="_black">
-              <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer  hover:text-red-700 duration-300">
-                <i className="fa-brands fa-instagram absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2 " />
-              </div>
-            </a>
-
-            <a href="https://discord.com/invite/NVRJcD9nah" target="_black">
-              <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer hover:text-red-700 duration-300">
-                <i className="fa-brands fa-discord absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2 " />
-              </div>
-            </a>
-
-            <a href="https://twitter.com/ProjectFADA" target="_black">
-              <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer hover:text-red-700 duration-300">
-                <i className="fa-brands fa-twitter absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2" />
-              </div>
-            </a>
-          </div>
-        </div>
-      </div> */}
+     
     </>
   );
 }

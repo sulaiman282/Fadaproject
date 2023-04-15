@@ -49,8 +49,8 @@ export default function Status() {
           {
             withCredentials: true,
             headers: {
-              'Access-Control-Allow-Origin': '*'
-            }
+              "Access-Control-Allow-Origin": "*",
+            },
           }
         );
         console.log("response", response);
@@ -76,8 +76,8 @@ export default function Status() {
         {
           withCredentials: true,
           headers: {
-            'Access-Control-Allow-Origin': '*'
-          }
+            "Access-Control-Allow-Origin": "*",
+          },
         }
       );
       console.log("response", response);
@@ -143,58 +143,47 @@ export default function Status() {
                   <div className="flex flex-col justify-center gap-4">
                     <p className="text-xl md:text-2xl ">Application Status </p>
 
-                    {statusTest && statusTest=="Accepted" && (
+                    {statusTest && statusTest == "Accepted" && (
                       <p className="py-2 text-center font-bold px-3 rounded-xl lg:text-2xl text-xl bg-green-700 text-white">
                         {statusTest}
                       </p>
                     )}
-                    {statusTest && statusTest=="Applied" && (
+                    {statusTest && statusTest == "Applied" && (
                       <p className="py-2 text-center font-bold px-3 rounded-xl lg:text-2xl text-xl bg-yellow-700 text-black">
                         {statusTest}
                       </p>
                     )}
-                    {statusTest && statusTest=="Rejected" && (
+                    {statusTest && statusTest == "Rejected" && (
                       <p className="py-2 text-center font-bold px-3 rounded-xl lg:text-2xl text-xl bg-red-700 text-white">
                         {statusTest}
                       </p>
                     )}
-                    {statusTest && statusTest=="Not Applied" && (
+                    {statusTest && statusTest == "Not Applied" && (
                       <p className="py-2 text-center font-bold px-3 rounded-xl lg:text-2xl text-xl bg-white text-primary">
                         {statusTest}
                       </p>
                     )}
-
-
-
-         
-        
-
-
                   </div>
                 </div>
 
                 <div className="text-2xl gap-6 flex justify-center mt-10 text-white">
+                  <a href="https://twitter.com/ProjectFADA" target="_black">
+                    <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer hover:bg-primary2 duration-300">
+                      <i className="fa-brands fa-twitter absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2" />
+                    </div>
+                  </a>
+
+                  <a href="https://discord.gg/WFnEbNGNDU" target="_black">
+                    <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer hover:bg-primary2 duration-300">
+                      <i className="fa-brands fa-discord absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2 " />
+                    </div>
+                  </a>
                   <a
                     href="https://www.instagram.com/projectfada/"
                     target="_black"
                   >
                     <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer  hover:bg-primary2 duration-300">
                       <i className="fa-brands fa-instagram absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2 " />
-                    </div>
-                  </a>
-
-                  <a
-                    href="https://discord.com/invite/NVRJcD9nah"
-                    target="_black"
-                  >
-                    <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer hover:bg-primary2 duration-300">
-                      <i className="fa-brands fa-discord absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2 " />
-                    </div>
-                  </a>
-
-                  <a href="https://twitter.com/ProjectFADA" target="_black">
-                    <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer hover:bg-primary2 duration-300">
-                      <i className="fa-brands fa-twitter absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2" />
                     </div>
                   </a>
                 </div>

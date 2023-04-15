@@ -27,8 +27,8 @@ export default function Admin() {
           {
             withCredentials: true,
             headers: {
-              'Access-Control-Allow-Origin': '*'
-            }
+              "Access-Control-Allow-Origin": "*",
+            },
           }
         );
         const { status } = response;
@@ -46,31 +46,26 @@ export default function Admin() {
     console.log("i am in");
     setPage(1);
     handleClick();
-  }, [status1,page]);
-
+  }, [status1, page]);
 
   //total page count
   useEffect(() => {
     function roundUpIfDecimalGreaterThanZero(value) {
-
-
       const totalProducts = value; // Replace with your total product count
       const itemsPerPage = 15;
-      
+
       const totalPages = totalProducts / itemsPerPage;
 
-
       if (totalPages % 1 > 0) {
-         setPageCount(Math.ceil(totalPages))
+        setPageCount(Math.ceil(totalPages));
       } else {
-        setPageCount(Math.floor(totalPages))
+        setPageCount(Math.floor(totalPages));
       }
     }
     roundUpIfDecimalGreaterThanZero(allData?.total);
   }, [allData]);
 
-
-console.log("pagecount",pageCount)
+  console.log("pagecount", pageCount);
 
   const handleClick = async () => {
     try {
@@ -79,8 +74,8 @@ console.log("pagecount",pageCount)
         {
           withCredentials: true,
           headers: {
-            'Access-Control-Allow-Origin': '*'
-          }
+            "Access-Control-Allow-Origin": "*",
+          },
         }
       );
       console.log("response", response);
@@ -113,8 +108,8 @@ console.log("pagecount",pageCount)
         {
           withCredentials: true,
           headers: {
-            'Access-Control-Allow-Origin': '*'
-          }
+            "Access-Control-Allow-Origin": "*",
+          },
         }
       );
       console.log("response", response);
@@ -149,9 +144,7 @@ console.log("pagecount",pageCount)
               <th className="border-b p-4  pl-4 text-start  w-2/12">
                 User Name
               </th>
-              <th className="border-b p-4  pl-4 text-start  w-1/12">
-                User Picture
-              </th>
+              <th className="border-b p-4  pl-4 text-start  w-1/12">Links</th>
               <th className="border-b py-4   text-start  w-1/12 ">User ID</th>
 
               <th className="border-b p-4   text-start   w-2/12">
@@ -194,18 +187,34 @@ console.log("pagecount",pageCount)
             {allData?.data?.map((item, index) => (
               <tr key={index} className="bg-white">
                 <td className="border p-2 pl-4 break-all	">{item?.username}</td>
-                <td className="border p-2 break-all	">
-                  <img
-                    src={
-                      item?.image
-                        ? process.env.NEXT_PUBLIC_API_URL +
-                          `/images/` +
-                          item?.image
-                        : `/noimage.png`
-                    }
-                    alt="Logo"
-                    className="object-contain h-20 w-20"
-                  />
+                <td className="border p-2 break-all	flex flex-col gap-2">
+                  {item?.links[0] && (
+                    <a
+                      href={item?.links[0]}
+                      className="hover:text-red-700 duration-300 text-sm"
+                      target="_black"
+                    >
+                      Link 1
+                    </a>
+                  )}
+                  {item?.links[1] && (
+                    <a
+                      href={item?.links[1]}
+                      className="hover:text-red-700 duration-300 text-sm"
+                      target="_black"
+                    >
+                      Link 2
+                    </a>
+                  )}
+                  {item?.links[2] && (
+                    <a
+                      href={item?.links[2]}
+                      className="hover:text-red-700 duration-300 text-sm"
+                      target="_black"
+                    >
+                      Link 3
+                    </a>
+                  )}
                 </td>
                 <td className="border p-2 break-all">{item?.user_id}</td>
                 <td className="border p-2 break-all">
@@ -244,24 +253,26 @@ console.log("pagecount",pageCount)
         </table>
 
         <div className="flex justify-center gap-4 mt-10 text-white lg:text-xl text-lg ">
-     {
-         page > 1 && (
-          <button onClick={()=>{setPage(page-1)}} className="bg-primary w-1/4 hover:bg-primary2 duration-300 py-3">
-          Previous
-        </button>
-
-         )
-     }
-         {
-          pageCount > page  && (
-
-            <button onClick={()=>{setPage(page+1)}} className="bg-primary hover:bg-primary2 duration-300 w-1/4 py-3">
-            Next
-          </button>
-
-          )
-         }
-         
+          {page > 1 && (
+            <button
+              onClick={() => {
+                setPage(page - 1);
+              }}
+              className="bg-primary w-1/4 hover:bg-primary2 duration-300 py-3"
+            >
+              Previous
+            </button>
+          )}
+          {pageCount > page && (
+            <button
+              onClick={() => {
+                setPage(page + 1);
+              }}
+              className="bg-primary hover:bg-primary2 duration-300 w-1/4 py-3"
+            >
+              Next
+            </button>
+          )}
         </div>
       </div>
     </>
