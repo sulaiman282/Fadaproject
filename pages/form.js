@@ -180,12 +180,6 @@ export default function Form() {
             else if(values.help_nft_text?.length >250) {
               errors.help_nft_text = "Max 250 characters.";
             }
-
-
-            if (!values.links[0]) {
-              errors.links = "Required";
-            }
-
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {

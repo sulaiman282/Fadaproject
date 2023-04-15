@@ -56,7 +56,7 @@ export default function Logout() {
   
           if (status == 200) {
 
-           router.reload();
+           router.push("/");
            handleClick();
           }
         } catch (error) {

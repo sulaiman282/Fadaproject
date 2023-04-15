@@ -43,7 +43,7 @@ export default function status() {
                 <div className="flex items-center flex-col gap-6 mt-5">
                   <div className="flex flex-col justify-center gap-4">
                     <p className="text-xl md:text-2xl text-center text-primary font-bold bg-white/50 rounded-md p-2">
-                      Form Submitted Successfully.{" "}
+                      Form Submitted Successfully.
                     </p>
                   </div>
                 </div>
