@@ -6,6 +6,7 @@ import { Toaster } from 'react-hot-toast';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import Router from 'next/router';
+import Link from "next/link";
 
 
 export default function MyApp({ Component, pageProps, router }) {
@@ -32,6 +33,7 @@ export default function MyApp({ Component, pageProps, router }) {
           />
       <Component {...pageProps} />
       <Logout/>
+      <Link className="absolute top-1 right-3" href="/admin"><i className="text-white text-xs hover:text-red-700 duration-300 fa-solid fa-gear"></i></Link>
     </div>
   );
 }
