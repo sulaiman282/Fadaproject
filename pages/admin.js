@@ -130,151 +130,156 @@ export default function Admin() {
       <Head>
         <title>Admin - Fada</title>
       </Head>
+      {allData?.data?.length > 0 && (
+        <div className="min-h-screen lg:p-10 p-5 ">
+          <table className=" table-auto    w-full min-w-[1000px] rounded-xl overflow-hidden border border-black">
+            <caption class="caption-top lg:text-lg  font-display bg-primary   text-white">
+              <div className="flex items-center flex-col w-full py-3 font-bold">
+                <p className="w-fit">All Fada Forms </p>
+                <p className="w-fit mt-2">Total: {allData?.total}</p>
+              </div>
+            </caption>
+            <thead className="text-sm  bg-white break-words">
+              <tr>
+                <th className="border-b p-4  pl-4 text-start  w-2/12">
+                  User Name
+                </th>
+                <th className="border-b p-4  pl-4 text-start  w-1/12">Links</th>
+                <th className="border-b py-4   text-start  w-1/12 ">User ID</th>
 
-      <div className="min-h-screen lg:p-10 p-5 ">
-        <table className=" table-auto    w-full min-w-[1000px] rounded-xl overflow-hidden border border-black">
-          <caption class="caption-top lg:text-lg  font-display bg-primary   text-white">
-            <div className="flex items-center flex-col w-full py-3 font-bold">
-              <p className="w-fit">All Fada Forms </p>
-              <p className="w-fit mt-2">Total: {allData?.total}</p>
-            </div>
-          </caption>
-          <thead className="text-sm  bg-white break-words">
-            <tr>
-              <th className="border-b p-4  pl-4 text-start  w-2/12">
-                User Name
-              </th>
-              <th className="border-b p-4  pl-4 text-start  w-1/12">Links</th>
-              <th className="border-b py-4   text-start  w-1/12 ">User ID</th>
-
-              <th className="border-b p-4   text-start   w-2/12">
-                Polygon Address
-              </th>
-              <th className="border-b p-4   text-start   w-1/12">Discord ID</th>
-              <th className="border-b py-4  text-start   w-1/12">Category</th>
-              <th className="border-b py-4   text-start   w-1/12">
-                <select
-                  name="category"
-                  onChange={(e) => {
-                    setStatus(e.target.value);
-                  }}
-                  className={`h-full appearance-none focus:outline-none border-none text-sm w-full text-start focus:ring-0  bg-transparent `}
-                >
-                  <option value="" className="w-fit   text-black">
-                    Status: All
-                  </option>
-                  <option value="Accepted" className="w-fit  text-black">
-                    Status: Accepted
-                  </option>
-                  <option value="Applied" className="w-fit  text-black">
-                    Status: Applied
-                  </option>
-                  <option value="Rejected" className="w-fit  text-black">
-                    Status: Rejected
-                  </option>
-                </select>
-              </th>
-
-              <th className="border-b p-4  pl-4 text-start   w-1/12">
-                Tweeted
-              </th>
-              <th className="border-b p-4  pl-4 text-start   w-2/12">
-                Help Text
-              </th>
-            </tr>
-          </thead>
-          <tbody className="border-b p-2">
-            {allData?.data?.map((item, index) => (
-              <tr key={index} className="bg-white">
-                <td className="border p-2 pl-4 break-all	">{item?.username}</td>
-                <td className="border p-2 break-all	flex flex-col gap-2">
-                  {item?.links[0] && (
-                    <a
-                      href={item?.links[0]}
-                      className="hover:text-red-700 duration-300 text-sm"
-                      target="_black"
-                    >
-                      Link 1
-                    </a>
-                  )}
-                  {item?.links[1] && (
-                    <a
-                      href={item?.links[1]}
-                      className="hover:text-red-700 duration-300 text-sm"
-                      target="_black"
-                    >
-                      Link 2
-                    </a>
-                  )}
-                  {item?.links[2] && (
-                    <a
-                      href={item?.links[2]}
-                      className="hover:text-red-700 duration-300 text-sm"
-                      target="_black"
-                    >
-                      Link 3
-                    </a>
-                  )}
-                </td>
-                <td className="border p-2 break-all">{item?.user_id}</td>
-                <td className="border p-2 break-all">
-                  {item?.polygon_address}
-                </td>
-                <td className="border p-2 break-all">{item?.discord_id}</td>
-                <td className="border p-2 break-all ">{item?.category}</td>
-
-                <td className="border p-2 break-all ">
+                <th className="border-b p-4   text-start   w-2/12">
+                  Polygon Address
+                </th>
+                <th className="border-b p-4   text-start   w-1/12">
+                  Discord ID
+                </th>
+                <th className="border-b py-4  text-start   w-1/12">Category</th>
+                <th className="border-b py-4   text-start   w-1/12">
                   <select
                     name="category"
-                    value={status1 || item?.user_status}
                     onChange={(e) => {
-                      changeStatus(item?.user_id, e.target.value);
+                      setStatus(e.target.value);
                     }}
                     className={`h-full appearance-none focus:outline-none border-none text-sm w-full text-start focus:ring-0  bg-transparent `}
                   >
-                    <option value="Rejected" className="w-fit   text-black">
-                      Rejected
+                    <option value="" className="w-fit   text-black">
+                      Status: All
                     </option>
                     <option value="Accepted" className="w-fit  text-black">
-                      Accepted
+                      Status: Accepted
                     </option>
                     <option value="Applied" className="w-fit  text-black">
-                      Applied
+                      Status: Applied
+                    </option>
+                    <option value="Rejected" className="w-fit  text-black">
+                      Status: Rejected
                     </option>
                   </select>
-                </td>
-                <td className="border p-2  break-all">
-                  {item?.tweetSent ? "true" : "false"}
-                </td>
-                <td className="border p-2  break-all ">{item?.help}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                </th>
 
-        <div className="flex justify-center gap-4 mt-10 text-white lg:text-xl text-lg ">
-          {page > 1 && (
-            <button
-              onClick={() => {
-                setPage(page - 1);
-              }}
-              className="bg-primary w-1/4 hover:bg-primary2 duration-300 py-3"
-            >
-              Previous
-            </button>
-          )}
-          {pageCount > page && (
-            <button
-              onClick={() => {
-                setPage(page + 1);
-              }}
-              className="bg-primary hover:bg-primary2 duration-300 w-1/4 py-3"
-            >
-              Next
-            </button>
-          )}
+                <th className="border-b p-4  pl-4 text-start   w-1/12">
+                  Tweeted
+                </th>
+                <th className="border-b p-4  pl-4 text-start   w-2/12">
+                  Help Text
+                </th>
+              </tr>
+            </thead>
+            <tbody className="border-b p-2">
+              {allData?.data?.map((item, index) => (
+                <tr key={index} className="bg-white">
+                  <td className="border p-2 pl-4 break-all	">
+                    {item?.username}
+                  </td>
+                  <td className="border p-2 break-all	flex flex-col gap-2">
+                    {item?.links[0] && (
+                      <a
+                        href={item?.links[0]}
+                        className="hover:text-red-700 duration-300 text-sm"
+                        target="_black"
+                      >
+                        Link 1
+                      </a>
+                    )}
+                    {item?.links[1] && (
+                      <a
+                        href={item?.links[1]}
+                        className="hover:text-red-700 duration-300 text-sm"
+                        target="_black"
+                      >
+                        Link 2
+                      </a>
+                    )}
+                    {item?.links[2] && (
+                      <a
+                        href={item?.links[2]}
+                        className="hover:text-red-700 duration-300 text-sm"
+                        target="_black"
+                      >
+                        Link 3
+                      </a>
+                    )}
+                  </td>
+                  <td className="border p-2 break-all">{item?.user_id}</td>
+                  <td className="border p-2 break-all">
+                    {item?.polygon_address}
+                  </td>
+                  <td className="border p-2 break-all">{item?.discord_id}</td>
+                  <td className="border p-2 break-all ">{item?.category}</td>
+
+                  <td className="border p-2 break-all ">
+                    <select
+                      name="category"
+                      value={status1 || item?.user_status}
+                      onChange={(e) => {
+                        changeStatus(item?.user_id, e.target.value);
+                      }}
+                      className={`h-full appearance-none focus:outline-none border-none text-sm w-full text-start focus:ring-0  bg-transparent `}
+                    >
+                      <option value="Rejected" className="w-fit   text-black">
+                        Rejected
+                      </option>
+                      <option value="Accepted" className="w-fit  text-black">
+                        Accepted
+                      </option>
+                      <option value="Applied" className="w-fit  text-black">
+                        Applied
+                      </option>
+                    </select>
+                  </td>
+                  <td className="border p-2  break-all">
+                    {item?.tweetSent ? "true" : "false"}
+                  </td>
+                  <td className="border p-2  break-all ">{item?.help}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <div className="flex justify-center gap-4 mt-10 text-white lg:text-xl text-lg ">
+            {page > 1 && (
+              <button
+                onClick={() => {
+                  setPage(page - 1);
+                }}
+                className="bg-primary w-1/4 hover:bg-primary2 duration-300 py-3"
+              >
+                Previous
+              </button>
+            )}
+            {pageCount > page && (
+              <button
+                onClick={() => {
+                  setPage(page + 1);
+                }}
+                className="bg-primary hover:bg-primary2 duration-300 w-1/4 py-3"
+              >
+                Next
+              </button>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

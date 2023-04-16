@@ -33,7 +33,7 @@ export default function MyApp({ Component, pageProps, router }) {
           />
       <Component {...pageProps} />
       <Logout/>
-      <Link className="absolute top-1 right-3" href="/admin"><i className="text-white text-xs hover:text-red-700 duration-300 fa-solid fa-gear"></i></Link>
+      <Link className="absolute bottom-1 left-3" href="/admin"><i className="border text-xs text-[#D7D3CA]  duration-300 fa-solid fa-gear"></i></Link>
     </div>
   );
 }
