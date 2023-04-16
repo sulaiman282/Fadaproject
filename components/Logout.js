@@ -33,7 +33,7 @@ export default function Logout() {
           const { status } = response;
   
           if (status == 200) {
-            setisTrue(true);
+            setisTrue(false);
           }
         } catch (error) {
         }
@@ -55,7 +55,7 @@ export default function Logout() {
           const { status } = response;
   
           if (status == 200) {
-
+          setisTrue(false);
            router.push("/");
            handleClick();
           }
