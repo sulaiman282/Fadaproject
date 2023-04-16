@@ -33,7 +33,7 @@ export default function Logout() {
           const { status } = response;
   
           if (status == 200) {
-            setisTrue(false);
+            setisTrue(true);
           }
         } catch (error) {
         }
