@@ -280,7 +280,7 @@ export default function Form() {
                       name="discord_id"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      placeholder="ex:9nFwxPkTCx"
+                      placeholder="xxxx#1111"
                       value={values.discord_id}
                       className="p-4  h-10 bg-white border-2 rounded-md text-gray-900  placeholder:text-gray-500 placeholder:text-xl"
                     />
@@ -366,7 +366,7 @@ export default function Form() {
                 </div>
 
                 <div className="flex flex-col ">
-                  <p className="text-xl capitalize">INSERT LINKS THAT SUPPORT YOUR APPLICATION</p>
+                  <p className="text-xl capitalize">INSERT LINKS TO RELEVANT THREADS, TWITTER CONTENT, AND FAN ART THAT BEST SUPPORT YOUR APPLICATION</p>
                   <input
                     type="text"
                     name="links"
@@ -376,7 +376,7 @@ export default function Form() {
                     onBlur={handleBlur}
                     defaultValue={values.links[0]}
                     placeholder="Link 1"
-                    className="p-4 rounded-md h-10 mt-3 border-2 bg-white w-full placeholder:text-gray-500 placeholder:text-xl pl-10"
+                    className="p-4 rounded-md h-10 mt-3 border-2 bg-white w-full placeholder:text-gray-500 placeholder:text-xl "
                   />
 
                   <span className="ml-5 mt-2 tracking-widest text-xs text-red-700">
@@ -392,7 +392,7 @@ export default function Form() {
                     onBlur={handleBlur}
                     defaultValue={values.links[1]}
                     placeholder="Link 2"
-                    className="p-4 rounded-md h-10  mt-3 border-2 bg-white w-full placeholder:text-gray-500 placeholder:text-xl pl-10"
+                    className="p-4 rounded-md h-10  mt-3 border-2 bg-white w-full placeholder:text-gray-500 placeholder:text-xl "
                   />
 
                   <input
@@ -404,7 +404,7 @@ export default function Form() {
                     onBlur={handleBlur}
                     defaultValue={values.links[2]}
                     placeholder="Link 3"
-                    className="p-4 rounded-md h-10  mt-3 border-2 bg-white w-full placeholder:text-gray-500 placeholder:text-xl pl-10"
+                    className="p-4 rounded-md h-10  mt-3 border-2 bg-white w-full placeholder:text-gray-500 placeholder:text-xl "
                   />
                 </div>
 

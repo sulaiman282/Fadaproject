@@ -44,7 +44,7 @@ export default function Admin() {
   //get all form
   useEffect(() => {
     console.log("i am in");
-    setPage(1);
+
     handleClick();
   }, [status1, page]);
 
@@ -134,14 +134,24 @@ export default function Admin() {
         <div className="min-h-screen lg:p-10 p-5 ">
           <table className=" table-auto    w-full min-w-[1000px] rounded-xl overflow-hidden border border-black">
             <caption class="caption-top lg:text-lg  font-display bg-primary   text-white">
-              <div className="flex items-center flex-col w-full py-3 font-bold">
-                <p className="w-fit">All Fada Forms </p>
-                <p className="w-fit mt-2">Total: {allData?.total}</p>
+              <div className="flex justify-between items-center px-5">
+                <div>
+                  <Link href="/">
+                    {" "}
+                    <i className="hover:text-red-700 duration-300 fa-solid fa-house"></i>{" "}
+                  </Link>{" "}
+                </div>
+
+                <div className="flex items-center flex-col w-full py-3 font-bold">
+                  <p className="w-fit">All Fada Forms </p>
+                  <p className="w-fit mt-2">Total: {allData?.total}</p>
+                </div>
+                <div></div>
               </div>
             </caption>
             <thead className="text-sm  bg-white break-words">
               <tr>
-                <th className="border-b p-4  pl-4 text-start  w-2/12">
+                <th className="border-b p-4  pl-4 text-start  w-1/12">
                   User Name
                 </th>
                 <th className="border-b p-4  pl-4 text-start  w-1/12">Links</th>
@@ -158,6 +168,7 @@ export default function Admin() {
                   <select
                     name="category"
                     onChange={(e) => {
+                      setPage(1);
                       setStatus(e.target.value);
                     }}
                     className={`h-full appearance-none focus:outline-none border-none text-sm w-full text-start focus:ring-0  bg-transparent `}
@@ -180,6 +191,9 @@ export default function Admin() {
                 <th className="border-b p-4  pl-4 text-start   w-1/12">
                   Tweeted
                 </th>
+                <th className="border-b p-4  pl-4 text-start   w-1/12" title="How long you have been in the space?">
+                  Duration
+                </th>
                 <th className="border-b p-4  pl-4 text-start   w-2/12">
                   Help Text
                 </th>
@@ -191,34 +205,36 @@ export default function Admin() {
                   <td className="border p-2 pl-4 break-all	">
                     {item?.username}
                   </td>
-                  <td className="border p-2 break-all	flex flex-col gap-2">
-                    {item?.links[0] && (
-                      <a
-                        href={item?.links[0]}
-                        className="hover:text-red-700 duration-300 text-sm"
-                        target="_black"
-                      >
-                        Link 1
-                      </a>
-                    )}
-                    {item?.links[1] && (
-                      <a
-                        href={item?.links[1]}
-                        className="hover:text-red-700 duration-300 text-sm"
-                        target="_black"
-                      >
-                        Link 2
-                      </a>
-                    )}
-                    {item?.links[2] && (
-                      <a
-                        href={item?.links[2]}
-                        className="hover:text-red-700 duration-300 text-sm"
-                        target="_black"
-                      >
-                        Link 3
-                      </a>
-                    )}
+                  <td className=" p-2 border-b h-full break-all	">
+                    <div className="flex flex-col gap-2">
+                      {item?.links[0] && (
+                        <a
+                          href={item?.links[0]}
+                          className="hover:text-red-700 duration-300 text-sm"
+                          target="_black"
+                        >
+                          Link 1
+                        </a>
+                      )}
+                      {item?.links[1] && (
+                        <a
+                          href={item?.links[1]}
+                          className="hover:text-red-700 duration-300 text-sm"
+                          target="_black"
+                        >
+                          Link 2
+                        </a>
+                      )}
+                      {item?.links[2] && (
+                        <a
+                          href={item?.links[2]}
+                          className="hover:text-red-700 duration-300 text-sm"
+                          target="_black"
+                        >
+                          Link 3
+                        </a>
+                      )}
+                    </div>
                   </td>
                   <td className="border p-2 break-all">{item?.user_id}</td>
                   <td className="border p-2 break-all">
@@ -250,7 +266,10 @@ export default function Admin() {
                   <td className="border p-2  break-all">
                     {item?.tweetSent ? "true" : "false"}
                   </td>
-                  <td className="border p-2  break-all ">{item?.help}</td>
+                  <td className="border  p-2  break-all">
+                    {item?.how_long}
+                  </td>
+                  <td className="border p-2  break-words ">{item?.help}</td>
                 </tr>
               ))}
             </tbody>
@@ -261,18 +280,26 @@ export default function Admin() {
               <button
                 onClick={() => {
                   setPage(page - 1);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="bg-primary w-1/4 hover:bg-primary2 duration-300 py-3"
+                className="bg-primary w-1/4 rounded-xl hover:bg-primary2 duration-300 py-3"
               >
                 Previous
               </button>
             )}
+            {page > 1 && (
+              <p className="w-40 flex justify-center items-center bg-white border text-black">
+                {page}
+              </p>
+            )}
+
             {pageCount > page && (
               <button
                 onClick={() => {
                   setPage(page + 1);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="bg-primary hover:bg-primary2 duration-300 w-1/4 py-3"
+                className="bg-primary rounded-xl hover:bg-primary2 duration-300 w-1/4 py-3"
               >
                 Next
               </button>

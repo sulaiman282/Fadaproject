@@ -47,8 +47,11 @@ export default function status() {
                     </p>
                   </div>
                 </div>
-
-                <div className="text-2xl gap-6 flex justify-center mt-10 text-white">
+                <p className="text-center lg:text-lg md:text-base text-sm text-primary mt-12">
+                  Join our community for more updates
+                </p>
+<p className="text-center text-lg lg:text-2xl animate-bounce mt-3 text-primary2 "><i className="fa-solid fa-angles-down"></i></p>
+                <div className="text-2xl gap-6 flex justify-center  text-white">
                   <a href="https://twitter.com/ProjectFADA" target="_black">
                     <div className="relative h-10 w-10 rounded-md bg-primary cursor-pointer hover:bg-primary2 duration-300">
                       <i className="fa-brands fa-twitter absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2" />

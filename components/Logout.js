@@ -66,7 +66,7 @@ export default function Logout() {
 
 
   return (
-    <div>
+    <div className="">
         {isTrue && (
             <div className="py-1 bg-primary flex justify-center">
             <p className="w-fit text-2xl text-white hover:text-red-700 cursor-pointer duration-300" onClick={()=>logout()}>Logout</p>
