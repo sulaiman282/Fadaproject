@@ -5,6 +5,8 @@ import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Pagination from "@mui/material/Pagination";
+
 
 export default function Admin() {
   const [allData, setAllData] = useState(null);
@@ -275,7 +277,28 @@ export default function Admin() {
             </tbody>
           </table>
 
-          <div className="flex justify-center gap-4 mt-10 text-white lg:text-xl text-lg ">
+
+
+
+
+          <div className=" flex justify-center lg:py-10 py-5">
+                      <Pagination
+                        boundaryCount={5}
+                        siblingCount={6}
+                        page={page}
+                        count={pageCount}
+                        shape="rounded"
+                        size="large"
+                        onChange={async (event, pageNumber) => {
+                          setPage(pageNumber);
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                      />
+                    </div>
+
+
+
+          {/* <div className="flex justify-center gap-4 mt-10 text-white lg:text-xl text-lg ">
             {page > 1 && (
               <button
                 onClick={() => {
@@ -304,7 +327,7 @@ export default function Admin() {
                 Next
               </button>
             )}
-          </div>
+          </div> */}
         </div>
       )}
     </>

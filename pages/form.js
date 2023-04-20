@@ -112,7 +112,7 @@ export default function Form() {
     }
     const formData = new FormData();
     formData.append("data", JSON.stringify(data1));
-   
+
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -176,8 +176,7 @@ export default function Form() {
             }
             if (!values.help_nft_text) {
               errors.help_nft_text = "Required";
-            }
-            else if(values.help_nft_text?.length >250) {
+            } else if (values.help_nft_text?.length > 250) {
               errors.help_nft_text = "Max 250 characters.";
             }
             return errors;
@@ -185,7 +184,7 @@ export default function Form() {
           onSubmit={(values, { setSubmitting }) => {
             submitform(values);
             setSubmitting(false);
-            console.log(values)
+            console.log(values);
           }}
         >
           {({
@@ -240,30 +239,33 @@ export default function Form() {
                         Developer
                       </option>
                       <option className="p-4" value="founder">
-                      Founder
+                        Founder
                       </option>
                       <option className="p-4" value="influencer">
-                      Influencer
+                        Influencer
                       </option>
                       <option className="p-4" value="grinder">
-                      Grinder
+                        Grinder
                       </option>
                       <option className="p-4" value="meme_poster">
-                      Meme Poster
+                        Meme Poster
                       </option>
                       <option className="p-4" value="content_creator">
-                      Content Creator
+                        Content Creator
                       </option>
-                      <option className="p-4" value="community_manager/moderator">
-                      Community Manager/Moderator
+                      <option
+                        className="p-4"
+                        value="community_manager/moderator"
+                      >
+                        Community Manager/Moderator
                       </option>
                       <option className="p-4" value="alpha_caller">
-                      Alpha Caller
+                        Alpha Caller
                       </option>
                       <option className="p-4" value="space_host">
-                      Space Host
+                        Space Host
                       </option>
-               
+
                       <option className="p-4" value="others">
                         Others...
                       </option>
@@ -366,7 +368,10 @@ export default function Form() {
                 </div>
 
                 <div className="flex flex-col ">
-                  <p className="text-xl capitalize">INSERT LINKS TO RELEVANT THREADS, TWITTER CONTENT, AND FAN ART THAT BEST SUPPORT YOUR APPLICATION</p>
+                  <p className="text-xl capitalize">
+                    INSERT LINKS TO RELEVANT THREADS, TWITTER CONTENT, AND FAN
+                    ART THAT BEST SUPPORT YOUR APPLICATION
+                  </p>
                   <input
                     type="text"
                     name="links"
@@ -467,13 +472,11 @@ export default function Form() {
                       values.tweet = true;
                     }}
                     className="bg-[#1DA1F2] text-lg lg:text-xl text-white font-bold w-40 text-center py-3 rounded-full"
-
                     href={`https://twitter.com/intent/tweet?text=I'm%20excited%20to%20share%20that%20I've%20just%20completed%20the%20form%20for%20@ProjectFADA%20!%20%0A%0A%0AI%20nominate%20${
                       values.reffer1 ? `@` + values.reffer1 : ""
                     }%20and%20${
                       values.reffer2 ? `@` + values.reffer2 : ""
                     }%20to%20fill%20it.%20It's%20your%20turn%20to%20Be%20A%20Fayden.`}
-
                     target="_blank"
                     rel="noopener noreferrer"
                   >
