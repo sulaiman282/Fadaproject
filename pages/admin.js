@@ -13,6 +13,8 @@ export default function Admin() {
 
   const [status1, setStatus] = useState("");
   const [statusChange, setStatusChange] = useState(null);
+  const [category,setCategory] = useState("");
+
 
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState();
@@ -48,7 +50,7 @@ export default function Admin() {
     console.log("i am in");
 
     handleClick();
-  }, [status1, page]);
+  }, [status1, page,category]);
 
   //total page count
   useEffect(() => {
@@ -72,7 +74,7 @@ export default function Admin() {
   const handleClick = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/form/get-all-forms?page=${page}&status=${status1}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/form/get-all-forms?page=${page}&status=${status1}&category=${category}`,
         {
           withCredentials: true,
           headers: {
@@ -95,6 +97,43 @@ export default function Admin() {
       console.error("error", error);
     }
   };
+
+//update click
+
+const UpdateClick =async(id)=>{
+  try {
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/form/click`,
+      {user_id:id,
+      clicked:true
+      },
+      {
+        withCredentials: true,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
+    console.log("response status clicked", response);
+
+    const { status } = response;
+
+    if (status == 200) {
+      handleClick();
+    }
+  } catch (error) {
+    //   router.push("/");
+    console.error("error", error);
+  }
+
+
+}
+
+
+
+
+
+
   //change status of the users
   const changeStatus = async (id, status) => {
     console.log(id, status);
@@ -156,7 +195,8 @@ export default function Admin() {
                 <th className="border-b p-4  pl-4 text-start  w-1/12">
                   User Name
                 </th>
-                <th className="border-b p-4  pl-4 text-start  w-1/12">Links</th>
+                <th className="border-b p-4  pl-4 text-start  w-[4%]">Links</th>
+             
                 <th className="border-b py-4   text-start  w-1/12 ">User ID</th>
 
                 <th className="border-b p-4   text-start   w-2/12">
@@ -165,7 +205,81 @@ export default function Admin() {
                 <th className="border-b p-4   text-start   w-1/12">
                   Discord ID
                 </th>
-                <th className="border-b py-4  text-start   w-1/12">Category</th>
+                <th className="border-b py-4  text-start   w-1/12">
+
+
+
+
+
+
+                <select
+                    name="category"
+                    onChange={async(e) => {
+                      setPage(1);
+                      setCategory(e.target.value);
+                    }}
+                    className={`h-full appearance-none focus:outline-none border-none text-sm w-full text-start focus:ring-0  bg-transparent `}
+                  >
+                    <option value="" className="w-fit   text-black">
+                      Category: All
+                    </option>
+                    <option className="p-4" value="artist">
+                        Artist
+                      </option>
+                      <option className="p-4" value="developer">
+                        Developer
+                      </option>
+                      <option className="p-4" value="founder">
+                        Founder
+                      </option>
+                      <option className="p-4" value="influencer">
+                        Influencer
+                      </option>
+                      <option className="p-4" value="grinder">
+                        Grinder
+                      </option>
+                      <option className="p-4" value="meme_poster">
+                        Meme Poster
+                      </option>
+                      <option className="p-4" value="content_creator">
+                        Content Creator
+                      </option>
+                      <option
+                        className="p-4"
+                        value="community_manager/moderator"
+                      >
+                        Community Manager/Moderator
+                      </option>
+                      <option className="p-4" value="alpha_caller">
+                        Alpha Caller
+                      </option>
+                      <option className="p-4" value="space_host">
+                        Space Host
+                      </option>
+
+                      <option className="p-4" value="others">
+                        Others...
+                      </option>
+                  </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </th>
                 <th className="border-b py-4   text-start   w-1/12">
                   <select
                     name="category"
@@ -189,7 +303,7 @@ export default function Admin() {
                     </option>
                   </select>
                 </th>
-
+                <th className="border-b p-4  pl-4 text-start  w-[4%]">Clicked</th>
                 <th className="border-b p-4  pl-4 text-start   w-1/12">
                   Tweeted
                 </th>
@@ -205,7 +319,7 @@ export default function Admin() {
               {allData?.data?.map((item, index) => (
                 <tr key={index} className="bg-white">
                   <td className="border p-2 pl-4 break-all	">
-                    {item?.username}
+                 {item?.username}
                   </td>
                   <td className=" p-2 border-b h-full break-all	">
                     <div className="flex flex-col gap-2">
@@ -238,6 +352,7 @@ export default function Admin() {
                       )}
                     </div>
                   </td>
+                  
                   <td className="border p-2 break-all">{item?.user_id}</td>
                   <td className="border p-2 break-all">
                     {item?.polygon_address}
@@ -265,6 +380,32 @@ export default function Admin() {
                       </option>
                     </select>
                   </td>
+
+
+
+                  <td className="border p-2 break-all">
+
+                  <label className="relative inline-flex items-center cursor-pointer mt-2">
+                      <input
+                        type="checkbox"
+                        value=""
+                        className="sr-only peer"
+                        onClick={() => UpdateClick(item?.user_id)}
+                        checked={item?.clicked == true}
+                      />
+                      <div className="w-12 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-0 peer-focus:ring-primary dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-[22px] after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+                    </label>
+
+
+
+                    
+                  </td>
+
+
+
+
+
+
                   <td className="border p-2  break-all">
                     {item?.tweetSent ? "true" : "false"}
                   </td>
