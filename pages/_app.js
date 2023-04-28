@@ -9,9 +9,9 @@ import Router from "next/router";
 import Link from "next/link";
 
 export default function MyApp({ Component, pageProps, router }) {
-  // console.log = function () {};
-  // console.warn = function () {};
-  // console.error = function () {};
+  console.log = function () {};
+  console.warn = function () {};
+  console.error = function () {};
   NProgress.configure({ showSpinner: false });
 
   Router.events.on("routeChangeStart", () => {
